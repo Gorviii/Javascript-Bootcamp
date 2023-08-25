@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Indian Names</title>
+</head>
+<body>
+  <h1>Indian Names</h1>
+  <div id="nameDisplay"></div>
+  <button id="previousButton">Previous</button>
+  <button id="nextButton">Next</button>
+
+  <script>
+    const names = ["Aarav", "Sanya", "Vikram", "Neha", "Rohan", "Priya", "Amit", "Meera", "Rajiv", "Ananya"];
+    let currentIndex = 0;
+    const nameDisplay = document.getElementById("nameDisplay");
+    const previousButton = document.getElementById("previousButton");
+    const nextButton = document.getElementById("nextButton");
+
+    function updateName() {
+      nameDisplay.textContent = names[currentIndex];
+    }
+
+    function nextName() {
+      currentIndex = (currentIndex + 1) % names.length;
+      updateName();
+    }
+
+    function previousName() {
+      currentIndex = (currentIndex - 1 + names.length) % names.length;
+      updateName();
+    }
+
+    nextButton.addEventListener("click", nextName);
+    previousButton.addEventListener("click", previousName);
+
+    // Initial display
+    updateName();
+  </script>
+</body>
+</html>
